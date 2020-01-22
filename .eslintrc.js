@@ -212,5 +212,8 @@ module.exports = exports = {
         "space-unary-ops": ERROR,
         "spaced-comment": [WARN, "always"],
         "wrap-regex": WARN
+    },
+    "parserOptions": {
+        "sourceType": "module",
     }
 };
