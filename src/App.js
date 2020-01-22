@@ -5,7 +5,13 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>ConuHacks 2020</p>
+        <form>
+          <label>
+            Name:
+    <input type="text" name="name" />
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
       </header>
     </div>
   );
