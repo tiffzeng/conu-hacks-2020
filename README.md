@@ -1,3 +1,41 @@
+# Title
+
+## Description
+
+---
+
+# Badges
+
+## Objective
+
+## Diagram / Screenshot
+
+## Built with / technologies
+
+## (Core) Features
+
+## Getting started
+
+### Prerequisites
+
+### Configuration
+
+### Installing
+
+### Usage
+
+#### Use cases
+
+## Running the tests
+
+## Roadmap / Todo
+
+## Support
+
+## Authors
+
+## License
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
