@@ -11,8 +11,9 @@ app.use(cors());
 app.use(express.json());
 
 
-//require('./routes/channels.routes.js')(app);
-//require('./routes/users.routes.js')(app);
+require('./routes/shutterstockAPI.js')(app);
+require('./routes/spotifyAPI.js')(app);
+require('./routes/touchtunesAPI.js')(app);
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
