@@ -13,7 +13,11 @@ class SearchBar extends React.Component {
         this.setState({song: e.target.value});
     }
 
-    async getSong(song) {
+    async getSong(e, song) {
+        this.setState({
+          song:""
+        })
+      e.preventDefault();
         try {
             const response = await getSongs(song);
             console.log(response)
@@ -25,6 +29,7 @@ class SearchBar extends React.Component {
     render() {
         return (
             <div>
+                <form>
                 <input
                     type="text"
                     value={this.state.song}
@@ -34,7 +39,9 @@ class SearchBar extends React.Component {
 
                 <br/>
 
-                <button onClick={this.getSong(this.state.song)}> Search </button>
+                <button disabled={!this.state.song}
+                          onClick={(e) => this.getSong(e,this.state.song)}> Search </button>
+                </form>
             </div>
         );
     }
