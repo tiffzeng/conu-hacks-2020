@@ -1,7 +1,10 @@
-// import axios from "axios";
-//
-// async function getSongs() {
-//
-//     // await axios.get().then()
-//
-// }
+import axios from "axios";
+
+export async function getSongs(song) {
+
+    try {
+        return await axios.get(`/song/search/${song}`);
+    } catch (error) {
+        console.error(error);
+    }
+}

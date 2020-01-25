@@ -1,33 +1,43 @@
 import React from 'react';
-import './src/api/Seach.js';
+import {getSongs} from '../api/Search'
 
 class SearchBar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { song: '' };
-    this.handleChange = this.handleChange.bind(this);
-  }
+    constructor(props) {
+        super(props);
+        this.state = {song: ''};
+        this.handleChange = this.handleChange.bind(this);
+        this.getSong = this.getSong.bind(this);
+    }
 
-  handleChange(e) {
-    this.setState({ song: e.target.value });
-  }
+    handleChange(e) {
+        this.setState({song: e.target.value});
+    }
 
-  render() {
-    return (
-      <div>
-        <input
-          type="text"
-          value={this.state.song}
-          onChange={this.handleChange}
-          placeholder="Search a song"
-        />
+    async getSong(song) {
+        try {
+            const response = await getSongs(song);
+            console.log(response)
+        } catch (error) {
+            console.log('error');
+        }
+    }
 
-        <br />
+    render() {
+        return (
+            <div>
+                <input
+                    type="text"
+                    value={this.state.song}
+                    onChange={this.handleChange}
+                    placeholder="Song Artist"
+                />
 
-        <button> Search </button>
-      </div>
-    );
-  }
+                <br/>
+
+                <button onClick={this.getSong(this.state.song)}> Search </button>
+            </div>
+        );
+    }
 }
 
 export default SearchBar;

@@ -7,7 +7,6 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>ConuHacks 2020</p>
-
         <SearchBar />
       </header>
     </div>
