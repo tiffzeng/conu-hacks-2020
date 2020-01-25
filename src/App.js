@@ -7,7 +7,11 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>ConuHacks 2020</p>
-        <ReactPlayer url='https://ak4.picdn.net/shutterstock/videos/32074804/thumb/stock-footage-large-container-ship-at-sea-top-down-aerial.mp4' playing />
+        <ReactPlayer
+          url="https://ak4.picdn.net/shutterstock/videos/32074804/thumb/stock-footage-large-container-ship-at-sea-top-down-aerial.mp4"
+          playing
+          loop
+        />
       </header>
     </div>
   );
