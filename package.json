@@ -1,94 +1,23 @@
 {
   "name": "conu-hacks-2020",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.4.0",
-    "@testing-library/user-event": "^7.2.1",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-player": "^1.14.2",
-    "react-scripts": "3.3.0"
-  },
+  "version": "1.0.0",
+  "description": "## Description",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint": "eslint .",
-    "format": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|md|vue)\""
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "eslint:recommended",
-      "plugin:prettier/recommended"
-    ],
-    "env": {
-      "browser": true,
-      "node": true,
-      "jest": true,
-      "es6": true,
-      "serviceworker": true
-    },
-    "parser": "babel-eslint",
-    "parserOptions": {
-      "ecmaVersion": 2020,
-      "sourceType": "module",
-      "ecmaFeatures": {
-        "modules": true,
-        "jsx": true,
-        "experimentalObjectRestSpread": true
-      }
-    },
-    "plugins": [
-      "import",
-      "react"
-    ]
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tiffzeng/conu-hacks-2020.git"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tiffzeng/conu-hacks-2020/issues"
   },
+  "homepage": "https://github.com/tiffzeng/conu-hacks-2020#readme",
   "devDependencies": {
-    "babel-eslint": "^10.0.3",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.9.0",
-    "eslint-plugin-prettier": "^3.1.2",
-    "eslint-plugin-react": "^7.18.0",
-    "husky": "^4.2.0",
-    "lint-staged": "^10.0.2",
-    "prettier": "^1.19.1"
-  },
-  "prettier": {
-    "singleQuote": true,
-    "semi": true,
-    "printWidth": 85,
-    "tabWidth": 2,
-    "arrowParens": "always"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.+(js|jsx)": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*.+(json|css|md)": [
-      "prettier --write",
-      "git add"
-    ]
+    "concurrently": "^5.0.2",
+    "nodemon": "^2.0.2"
   }
 }
