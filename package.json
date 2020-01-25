@@ -4,7 +4,8 @@
   "description": "## Description",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "installall": "concurrently \"npm install\" \"cd frontend && npm install\" \"cd backend && npm install\"",
+    "start": "concurrently \"cd frontend && npm start\" \"cd backend && npm start\""
   },
   "repository": {
     "type": "git",
