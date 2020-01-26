@@ -31,10 +31,10 @@ export default class List extends React.Component {
     const mybtn ={
       padding: "10px",
       borderRadius:"4px",
-      border:"1px solid #212833",
+      border:"1px solid #173F5F",
       width: "28vw",
       fontSize: "10pt",
-      color: "#212833"
+      color: "#173F5F"
     };
 
 

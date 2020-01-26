@@ -32,7 +32,7 @@ class SearchBar extends React.Component {
 
       const srch = {
         padding: "12px",
-        border: "1px solid #212833",
+        border: "1px solid #173F5F",
         width: "20vw",
         borderRadius:"4px",
         fontSize: "10pt"
@@ -40,13 +40,13 @@ class SearchBar extends React.Component {
 
       const btn = {
         padding: "12px",
-        border: "1px solid #212833",
+        border: "1px solid #173F5F",
         borderRadius:"4px",
         width: "100px",
         fontWeight: "bold",
         fontSize: "10pt",
         color: "white",
-        backgroundColor: "#eb4c02"
+        backgroundColor: "#ED553B"
       };
 
 
@@ -58,7 +58,7 @@ class SearchBar extends React.Component {
                     type="text"
                     value={this.state.song}
                     onChange={this.handleChange}
-                    placeholder="Search a song or an artist"
+                    placeholder="Search a song and an artist"
                 />
                 <button
                   style={btn}
