@@ -23,6 +23,8 @@ const matchLyrics = async (lyrics, duration) => {
       processedLyrics.push(processedLyric);
     }
   }
+
+  return processedLyrics;
 };
 exports.matchLyrics = matchLyrics;
 
