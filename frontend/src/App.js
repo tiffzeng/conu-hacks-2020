@@ -42,12 +42,6 @@ class App extends React.Component {
             )}
           </div>
           <Footer />
-          <p style={title}> ConuHacks 2020 </p>
-          <SearchBar passData={this.passData}/>
-          <br  />
-          <List items={this.state.data}/>
-          <VideoPlayer url={this.state.url}/>
-          <Footer/>
         </header>
       </div>
     );
