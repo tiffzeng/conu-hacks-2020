@@ -10,7 +10,7 @@ module.exports = async (songId) => {
     const query = await querySearcher(metadata['artist'], metadata['title']);
     const lyrics = await getLyrics(query);
     const lyricMatches = await lyricMatching(lyrics, metadata['duration']);
-    const response = await mediaMatching(lyricMatches);
+    let response = await mediaMatching(lyricMatches);
     response.push(metadata['url']);
     return response;
   } catch (e) {

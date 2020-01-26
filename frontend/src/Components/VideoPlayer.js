@@ -12,7 +12,7 @@ export default class VideoPlayer extends Component {
   render() {
     return (
       <div>
-        <ReactPlayer url={this.state.url} playing />
+        <ReactPlayer url={this.props.url} playing />
       </div>
     );
   }
