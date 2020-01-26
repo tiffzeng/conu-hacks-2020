@@ -22,11 +22,17 @@ class App extends React.Component {
   }
 
   render() {
+
+    const title = {
+      fontSize: "20pt"
+    };
+
     return (
       <div className="App">
         <header className="App-header">
-          <p>ConuHacks 2020</p>
+          <p style={title}> ConuHacks 2020 </p>
           <SearchBar passData={this.passData}/>
+          <br  />
           <List items={this.state.data}/>
           <VideoPlayer url={this.state.url}/>
           <Footer/>

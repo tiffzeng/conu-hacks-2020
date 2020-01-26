@@ -2,6 +2,7 @@ import React from 'react';
 import {getSongs} from '../api/Search'
 
 class SearchBar extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {song: ''};
@@ -28,20 +29,45 @@ class SearchBar extends React.Component {
     }
 
     render() {
+
+      const srch = {
+        padding: "12px",
+        width: "300px",
+        borderRadius:"4px",
+        border:"1px solid white",
+        fontSize: "10pt"
+      };
+
+      const btn = {
+        padding: "7px",
+        borderRadius:"4px",
+        border:"1px solid #212833",
+        width: "100px",
+        fontWeight: "bold",
+        fontSize: "10pt",
+        color: "white",
+        backgroundColor: "#eb4c02"
+      };
+
+
         return (
             <div>
                 <form>
                 <input
+                    style={srch}
                     type="text"
                     value={this.state.song}
                     onChange={this.handleChange}
-                    placeholder="Song Artist"
+                    placeholder="Search a song and an artist"
                 />
 
                 <br/>
 
-                <button disabled={!this.state.song}
-                          onClick={(e) => this.getSong(e,this.state.song)}> Search </button>
+                <button
+                  style={btn}
+                  disabled={!this.state.song}
+                  onClick={(e) => this.getSong(e,this.state.song)}> Search
+                </button>
                 </form>
             </div>
         );
