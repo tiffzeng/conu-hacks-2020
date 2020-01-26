@@ -14,7 +14,6 @@ module.exports = async (lyrics, duration) => {
     }
   } else {
     let inc = Math.floor(lyrics.length / 20);
-    // console.log(inc);
     let lyric;
     for (let i = 0; i < lyrics.length; i += inc) {
       if (i >= lyrics.length) {

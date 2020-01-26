@@ -53,20 +53,3 @@ async function getOnePhoto(query) {
   let random_image = data['data'][Math.floor(Math.random() * data['data'].length)];
   return random_image['assets']['preview_1500']['url'];
 }
-
-// const testArray = [
-//   {
-//     lyric: [
-//       'guess', 'neighbor',
-//       'think', 'sellin',
-//       'dope', 'sellin',
-//       'dope'
-//     ],
-//     duration: 10
-//   },
-//   {
-//     lyric: ['just', 'wanna', 'talk', 'man'
-//     ], duration: 10
-//   }];
-//
-// ayy(testArray);
