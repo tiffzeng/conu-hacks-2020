@@ -3,9 +3,10 @@ import List from './Components/List';
 import SearchBar from './Components/SearchBar';
 import Footer from './Components/Footer';
 import VideoPlayer from './Components/VideoPlayer';
-import {getSong} from './api/Search';
+import { getSong } from './api/Search';
 import React from 'react';
 import ReactPlayer from 'react-player';
+import ReactHowler from 'react-howler';
 
 class App extends React.Component {
   constructor() {
@@ -14,11 +15,11 @@ class App extends React.Component {
       playing: false,
       isLoading: false,
       urls: [],
-      id: "",
+      id: '',
       data: [],
-      videoUrl: "",//"https://ak4.picdn.net/shutterstock/videos/32074804/thumb/stock-footage-large-container-ship-at-sea-top-down-aerial.mp4",
+      videoUrl: '',//"https://ak4.picdn.net/shutterstock/videos/32074804/thumb/stock-footage-large-container-ship-at-sea-top-down-aerial.mp4",
       imageUrl:
-        ""//'https://image.shutterstock.com/display_pic_with_logo/2723875/755022088/stock-photo-aerial-view-to-ocean-waves-blue-water-background-755022088.jpg'
+        ''//'https://image.shutterstock.com/display_pic_with_logo/2723875/755022088/stock-photo-aerial-view-to-ocean-waves-blue-water-background-755022088.jpg'
     };
     this.passData = this.passData.bind(this);
     this.getID = this.getID.bind(this);
@@ -31,42 +32,42 @@ class App extends React.Component {
   }
 
 
-  async getID(id){
+  async getID(id) {
     this.setState({
       isLoading: true
-    })
+    });
     //get song info
     const response = await getSong(id);
     this.setState({
       id: id,
       urls: response.data,
       isLoading: false
-    })
+    });
 
     this.displayVideo(this.state.urls);
-    console.log(this.state.urls);
+    console.log(this.state.urls[this.state.urls.length - 1]);
   }
 
-  
+
   displayVideo(urls) {
-    for (let i=0; i<this.state.urls.length-2; i++) {
-      setTimeout( function (){
+    for (let i = 0; i < this.state.urls.length - 2; i++) {
+      setTimeout(function() {
         this.setState({
           videoUrl: urls[i]['link'],
           playing: true
         });
-      }.bind(this), i*4000 );
+      }.bind(this), i * 4000);
+    }
   }
-  }
-  
 
-  displayList(){
-    return(
+
+  displayList() {
+    return (
       <List items={this.state.data}
             passData={this.passData}
             getID={this.getID}
       />
-    )
+    );
   }
 
   render() {
@@ -75,13 +76,20 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <h2> ConU Hacks V 2020 </h2>
-          <SearchBar passData={this.passData} />
+          <SearchBar passData={this.passData}/>
 
-          <br />
+          <br/>
           {this.state.isLoading && <div>Loading</div>}
           {!this.state.id && this.displayList()}
-          {(this.state.videoUrl.indexOf("mp4") !==-1 || this.state.videoUrl == "") ? <ReactPlayer url={this.state.videoUrl} playing={this.state.playing}/> : <img src={this.state.url} alt="new" width="640" height="360"/>}
-          <Footer />
+          {(this.state.videoUrl.indexOf('mp4') !== -1 || this.state.videoUrl == '') ?
+            <ReactPlayer url={this.state.videoUrl} playing={this.state.playing}/> :
+            <img src={this.state.url} alt="new" width="640" height="360"/>}
+          {(this.state.urls.length > 0 &&
+            <ReactHowler
+              src={this.state.urls[this.state.urls.length - 1]}
+              playing={true}
+            />)}
+          <Footer/>
         </header>
       </div>
     );
