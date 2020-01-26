@@ -22,6 +22,7 @@ class App extends React.Component {
     };
     this.passData = this.passData.bind(this);
     this.getID = this.getID.bind(this);
+    this.displayVideo = this.displayVideo.bind(this);
   }
 
   passData(data) {
@@ -38,24 +39,23 @@ class App extends React.Component {
     const response = await getSong(id);
     this.setState({
       id: id,
-      urls: response,
+      urls: response.data,
       isLoading: false
     })
 
-    this.displayVideo();
-    console.log(response.data[0].duration);
+    this.displayVideo(this.state.urls);
+    console.log(this.state.urls);
   }
 
   
-  displayVideo() {
+  displayVideo(urls) {
     for (let i=0; i<this.state.urls.length-2; i++) {
-      setTimeout( function timer(){
-          this.setState({
-            videoUrl: this.state.urls[i]
-          }).then(() => {
-            this.forceUpdate();
-          })
-      }, i*4000 );
+      setTimeout( function (){
+        this.setState({
+          videoUrl: urls[i]['link'],
+          playing: true
+        });
+      }.bind(this), i*4000 );
   }
   }
   
@@ -80,7 +80,7 @@ class App extends React.Component {
           <br />
           {this.state.isLoading && <div>Loading</div>}
           {!this.state.id && this.displayList()}
-          <ReactPlayer url={this.state.videoUrl} playing={this.state.playing}/>
+          {(this.state.videoUrl.indexOf("mp4") !==-1 || this.state.videoUrl == "") ? <ReactPlayer url={this.state.videoUrl} playing={this.state.playing}/> : <img src={this.state.url} alt="new" width="640" height="360"/>}
           <Footer />
         </header>
       </div>
