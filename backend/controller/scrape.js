@@ -1,8 +1,8 @@
-let url = `https://www.azlyrics.com/lyrics/future/lifeisgood.html`;
+// let url = `https://www.azlyrics.com/lyrics/future/lifeisgood.html`;
 const axios = require('axios');
 const cheerio = require('cheerio');
 
-export async function getLyrics() {
+export async function getLyrics(url) {
   try {
     let response = await axios.get(url);
     let html = await response.data;
