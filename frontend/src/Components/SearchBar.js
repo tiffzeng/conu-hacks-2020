@@ -17,10 +17,11 @@ class SearchBar extends React.Component {
         this.setState({
           song:""
         })
+
       e.preventDefault();
         try {
             const response = await getSongs(song);
-            console.log(response)
+            this.props.passData(response.data);
         } catch (error) {
             console.log('error');
         }

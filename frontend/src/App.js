@@ -1,17 +1,25 @@
 import './App.css';
+import List from './Components/List'
 import SearchBar from './Components/SearchBar';
 import Footer from './Components/Footer';
 import VideoPlayer from './Components/VideoPlayer';
-import React, { Component } from 'react'
+import React from 'react';
 
-export default class App extends Component {
-  constructor(){
+class App extends React.Component {
+
+  constructor() {
     super();
-
-    this.state={
-      url:""
-    }
+    this.state = {
+      data: []
+    };
+    this.passData = this.passData.bind(this);
   }
+
+  passData(data) {
+    this.setState({data: data});
+    console.log(this.state.data);
+  }
+
   render() {
     return (
       <div className="App">
@@ -21,10 +29,14 @@ export default class App extends Component {
           <Footer/>
           <VideoPlayer url={this.state.url}/>
   
+          <SearchBar passData={this.passData}/>
+          <List items={this.state.data}/>
         </header>
       </div>
     );
   }
 }
+
+export default App
 
 
