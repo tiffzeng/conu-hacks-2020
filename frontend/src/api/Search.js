@@ -10,7 +10,7 @@ export async function getSongs(song) {
 }
 export async function getSong(id){
     try {
-        return await axios.get(`/song/${id}`);
+        return await axios.get(`/song/${id}`)
     } catch (error){
         console.log(error);
     }

@@ -7,8 +7,9 @@ module.exports = async (songId) => {
   getMetadata(songId).then((data) => {
     querySearcher(data['artist'], data['title']).then((response) => {
       getLyrics(response).then((lyrics) => {
-        lyricMatching(lyrics, data['duration']).then((res) => {
-          console.log(res);
+        lyricMatching(lyrics, data['duration']).then((response) => {
+          console.log(response);
+          return response;
         });
       });
     });

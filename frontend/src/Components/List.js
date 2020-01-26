@@ -35,7 +35,7 @@ export default class List extends React.Component {
     return (
           this.props.items.map((item, index) =>
             <button style={mybtn}
-                    onClick={(e) => this.getID(e, item['id'])}
+                    onClick={(e)  => this.getID(e, item['id'])}
                     key={index}>{item['title']} by {item['artistName']}</button>)
 
     );
