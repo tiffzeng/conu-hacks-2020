@@ -5,10 +5,16 @@ const lyricMatching = require('./lyricMatching.js');
 const mediaMatching = require('./mediaMatching.js');
 
 module.exports = async (songId) => {
-  const metadata = await getMetadata(songId);
-  const query = await querySearcher(metadata['artist'], metadata['title']);
-  const lyrics = await getLyrics(query);
-  const lyricMatches = await lyricMatching(lyrics, metadata['duration']);
-  const response = await mediaMatching(lyricMatches);
-  return response;
+  try {
+    const metadata = await getMetadata(songId);
+    const query = await querySearcher(metadata['artist'], metadata['title']);
+    const lyrics = await getLyrics(query);
+    const lyricMatches = await lyricMatching(lyrics, metadata['duration']);
+    const response = await mediaMatching(lyricMatches);
+    response.push(metadata['url']);
+    return response;
+  } catch (e) {
+    console.log(e);
+    return e;
+  }
 };
