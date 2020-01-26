@@ -33,7 +33,13 @@ class App extends React.Component {
         <header className="App-header">
           <p>ConuHacks 2020</p>
           <SearchBar passData={this.passData} />
-          <List items={this.state.data} />
+
+          <br />
+
+          <List items={this.state.data}
+                passData={this.passData}
+          />
+
           <div>
             {this.state.videoUrl ? (
               <VideoPlayer url={this.state.videoUrl} />
