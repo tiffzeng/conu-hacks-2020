@@ -36,6 +36,7 @@ async function getOneVideo(lyricsArray) {
   }
 
   let random_video = data['data'][Math.floor(Math.random() * data['data'].length)];
+  // let random_video = data['data'][0];
   return random_video['assets']['preview_mp4']['url'];
 }
 
