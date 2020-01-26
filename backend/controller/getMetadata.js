@@ -4,7 +4,7 @@ dotenv.config({ path: '../.env' });
 
 const songs_url = 'https://conuhacks-2020.tsp.cld.touchtunes.com/v1/songs/';
 
-const getMetadata = async (songId) => {
+module.exports = async (songId) => {
   try {
     let options = {
       url: songs_url + String(songId),
@@ -26,4 +26,4 @@ const getMetadata = async (songId) => {
   }
 };
 
-exports.getMetadata = getMetadata;
+// module.exports.getMetadata = getMetadata;

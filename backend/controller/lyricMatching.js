@@ -1,6 +1,6 @@
 const natural = require('natural');
 
-const matchLyrics = async (lyrics, duration) => {
+module.exports = async (lyrics, duration) => {
   natural.PorterStemmer.attach();
   let processedLyrics = [];
   if (lyrics.length < 20) {
@@ -26,7 +26,7 @@ const matchLyrics = async (lyrics, duration) => {
 
   return processedLyrics;
 };
-exports.matchLyrics = matchLyrics;
+// exports.matchLyrics = matchLyrics;
 
 /*
 const lyrics = [

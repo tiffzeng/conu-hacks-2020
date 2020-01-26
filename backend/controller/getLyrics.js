@@ -3,7 +3,7 @@ const Axios = require('axios');
 const Cheerio = require('cheerio');
 // const cheerio = require('cheerio');
 
-const getLyrics = async (url) => {
+module.exports = async (url) => {
   try {
     let response = await Axios.get(url);
     let html = await response.data;
@@ -26,7 +26,7 @@ const getLyrics = async (url) => {
     console.log(e);
   }
 };
-exports.getLyrics = getLyrics;
+// exports.getLyrics = getLyrics;
 // getLyrics().then((r) => {
 //   console.log(r);
 // });

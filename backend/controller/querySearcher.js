@@ -2,7 +2,7 @@ const Axios = require('axios');
 const Cheerio = require('cheerio');
 const base_url = 'https://search.azlyrics.com/search.php?q=+';
 
-const querySearcher = async (artist, title) => {
+module.exports = async (artist, title) => {
   try {
     let response = await Axios.get(base_url + artist + '+' + title);
     let html = await response.data;
@@ -20,7 +20,7 @@ const querySearcher = async (artist, title) => {
   }
 };
 
-exports.querySearcher = querySearcher;
+// exports.querySearcher = querySearcher;
 
 // querySearcher("j. cole", "neighbors").then((r) => {
 //   console.log(r);
