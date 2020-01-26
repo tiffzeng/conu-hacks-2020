@@ -1,7 +1,7 @@
 const axios = require('axios');
 require('dotenv').config();
 
-const url = 'https://conuhacks-2020.tsp.cld.touchtunes.com/v1/songs';
+const songs_url = 'https://conuhacks-2020.tsp.cld.touchtunes.com/v1/songs/';
 
 module.exports = function(app) {
   console.log('touchtunesAPI');
@@ -10,7 +10,7 @@ module.exports = function(app) {
       let query = req.params.query;
       let options = {
         params: { query: query },
-        url: url,
+        url: songs_url,
         method: 'get',
         headers: { authorization: process.env.OCTAVE_GROUP }
       };
@@ -18,6 +18,29 @@ module.exports = function(app) {
       let data = await response.data;
       res.send(data['songs']);
     } catch (e) {
+      // fail quietly
+      console.log(e);
+    }
+  });
+
+  app.get('/song/info/:query', async (req, res) => {
+    try {
+      let id = req.params.query;
+      let options = {
+        url: songs_url + id,
+        method: 'get',
+        headers: { authorization: process.env.OCTAVE_GROUP }
+      };
+      let response = await axios(options);
+      let data = await response.data;
+      res.json({
+        title: data['title'],
+        artist: data['artist']['name'],
+        duration: data['duration'],
+        url: data['playUrl']
+      });
+    } catch (e) {
+      // fail quietly
       console.log(e);
     }
   });
