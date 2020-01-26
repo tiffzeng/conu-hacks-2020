@@ -4,7 +4,7 @@ module.exports = async (lyrics, duration) => {
   natural.PorterStemmer.attach();
   let processedLyrics = [];
   if (lyrics.length < 20) {
-    for (var lyric of lyrics) {
+    for (let lyric of lyrics) {
       const processedLyric = {
         lyric: lyric.tokenizeAndStem(),
         duration: duration / lyrics.length
@@ -13,29 +13,21 @@ module.exports = async (lyrics, duration) => {
       processedLyrics.push(processedLyric);
     }
   } else {
-    for (var i = 0; i < lyrics.length; i += lyrics.length / 20) {
-      let twoLyrics = i + 1 >= lyrics.length ? lyrics[i] : lyrics[i] + lyrics[i + 1];
-
+    let inc = Math.floor(lyrics.length / 20);
+    console.log(inc);
+    let lyric;
+    for (let i = 0; i < lyrics.length; i += inc) {
+      if (i >= lyrics.length) {
+        break;
+      }
+      lyric = lyrics[i];
       const processedLyric = {
-        lyric: twoLyrics.tokenizeAndStem(),
-        duration: duration / lyrics.length / 20
+        lyric: await lyric.tokenizeAndStem(),
+        duration: Math.floor(duration / 20)
       };
       processedLyrics.push(processedLyric);
     }
   }
-
+  console.log(processedLyrics);
   return processedLyrics;
 };
-// exports.matchLyrics = matchLyrics;
-
-/*
-const lyrics = [
-  'Do you ever feel like a plastic bag',
-  'Drifting through the wind, wanting to start again?',
-  'Do you ever feel, feel so paper-thin',
-  'Like a house of cards, one blow from caving in?'
-];
-matchLyrics(lyrics, 180).then((res) => {
-  console.log(res);
-});
-*/
