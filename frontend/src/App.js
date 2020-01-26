@@ -10,7 +10,8 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      data: []
+      data: [],
+      url: ""
     };
     this.passData = this.passData.bind(this);
   }
@@ -25,12 +26,10 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <p>ConuHacks 2020</p>
-          <SearchBar />
-          <Footer/>
-          <VideoPlayer url={this.state.url}/>
-  
           <SearchBar passData={this.passData}/>
           <List items={this.state.data}/>
+          <VideoPlayer url={this.state.url}/>
+          <Footer/>
         </header>
       </div>
     );
