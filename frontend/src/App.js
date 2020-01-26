@@ -62,7 +62,7 @@ class App extends React.Component {
             playing: true
           });
         }.bind(this),
-        i * this.state.urls[0].duration * 1000
+        i * this.state.urls[0].duration * 600
       );
     }
   }
@@ -83,17 +83,18 @@ class App extends React.Component {
           <br/>
           {this.state.isLoading && <div>Loading</div>}
           {!this.state.hideList && this.displayList()}
+          {(this.state.urls.length > 0 &&
+            <ReactHowler
+              src={this.state.urls[this.state.urls.length - 1]}
+              playing={true}
+            />)}
           {this.state.videoUrl.indexOf('mp4') !== -1 ||
           this.state.videoUrl === '' ? (
             <ReactPlayer url={this.state.videoUrl} playing={this.state.playing} />
           ) : (
             <img src={this.state.url} alt="new" width="640" height="360" />
           )}
-          {(this.state.urls.length > 0 &&
-            <ReactHowler
-              src={this.state.urls[this.state.urls.length - 1]}
-              playing={true}
-            />)}
+
           <Footer />
         </header>
       </div>
