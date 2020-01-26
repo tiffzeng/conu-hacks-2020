@@ -4,15 +4,9 @@ const getMetadata = require('./getMetadata.js');
 const lyricMatching = require('./lyricMatching.js');
 
 module.exports = async (songId) => {
-  getMetadata(songId).then((data) => {
-    querySearcher(data['artist'], data['title']).then((response) => {
-      getLyrics(response).then((lyrics) => {
-        lyricMatching(lyrics, data['duration']).then((response) => {
-          console.log(response);
-          return response;
-        });
-      });
-    });
-  });
+  const metadata = await getMetadata(songId);
+  const query = await querySearcher(metadata['artist'], metadata['title']);
+  const lyrics = await getLyrics(query);
+  const response = await lyricMatching(lyrics, metadata['duration']);
+  return response;
 };
-
