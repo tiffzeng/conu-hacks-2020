@@ -14,21 +14,15 @@ export default class List extends React.Component {
   }
 
   async getID(e, id) {
-    this.setState({
-      id:""
-    })
-
     e.preventDefault();
-    try {
-      const response = await getIDS(id);
-      this.props.passData(response.data);
-    } catch (error) {
-      console.log('error');
-    }
+    this.props.getID(id);
   }
+
+
+
   render() {
 
-    const mybtn ={
+    const mybtn = {
       padding: "10px",
       borderRadius:"4px",
       border:"1px solid #173F5F",
@@ -41,7 +35,7 @@ export default class List extends React.Component {
     return (
           this.props.items.map((item, index) =>
             <button style={mybtn}
-                    onClick={() => alert(item['id'])}
+                    onClick={(e) => this.getID(e, item['id'])}
                     key={index}>{item['title']} by {item['artistName']}</button>)
 
     );

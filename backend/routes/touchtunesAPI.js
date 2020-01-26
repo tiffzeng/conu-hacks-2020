@@ -1,4 +1,5 @@
 const axios = require('axios');
+const controllerLogic = require('../controller/controllerLogic.js');
 require('dotenv').config();
 
 const songs_url = 'https://conuhacks-2020.tsp.cld.touchtunes.com/v1/songs/';
@@ -17,6 +18,17 @@ module.exports = function(app) {
       let response = await axios(options);
       let data = await response.data;
       res.send(data['songs']);
+    } catch (e) {
+      // fail quietly
+      console.log(e);
+    }
+  });
+
+  app.get('/song/:query', async (req, res) => {
+    try {
+      let query = req.params.query;
+      const response = await controllerLogic(query);
+      res.send(response);
     } catch (e) {
       // fail quietly
       console.log(e);

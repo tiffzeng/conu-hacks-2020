@@ -31,17 +31,17 @@ class SearchBar extends React.Component {
     render() {
 
       const srch = {
-        padding: "12px",
+        padding: "18px",
         border: "1px solid #173F5F",
         width: "20vw",
-        borderRadius:"4px",
+        borderRadius:"5px",
         fontSize: "10pt"
       };
 
       const btn = {
-        padding: "12px",
+        padding: "18px",
         border: "1px solid #173F5F",
-        borderRadius:"4px",
+        borderRadius:"5px",
         width: "100px",
         fontWeight: "bold",
         fontSize: "10pt",

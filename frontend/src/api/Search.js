@@ -8,3 +8,10 @@ export async function getSongs(song) {
         console.error(error);
     }
 }
+export async function getSong(id){
+    try {
+        return await axios.get(`/song/${id}`);
+    } catch (error){
+        console.log(error);
+    }
+}
