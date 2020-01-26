@@ -1,10 +1,10 @@
-import Axios from 'axios';
-import dotenv from 'dotenv';
+const Axios = require('axios');
+const dotenv = require('dotenv');
 dotenv.config({ path: '../.env' });
 
 const songs_url = 'https://conuhacks-2020.tsp.cld.touchtunes.com/v1/songs/';
 
-export async function getMetadata(songId) {
+const getMetadata = async (songId) => {
   try {
     let options = {
       url: songs_url + String(songId),
@@ -24,4 +24,6 @@ export async function getMetadata(songId) {
     // fail quietly
     console.log(e);
   }
-}
+};
+
+exports.getMetadata = getMetadata;

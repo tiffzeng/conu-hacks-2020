@@ -1,7 +1,7 @@
-import { querySearcher } from './querySearcher.js';
-import { getLyrics } from './getLyrics.js';
-import { getMetadata } from './getMetadata.js';
-import { lyricMatching } from './lyricMatching.js';
+const querySearcher = require('./querySearcher.js');
+const getLyrics = require('./getLyrics.js');
+const getMetadata = require('./getMetadata.js');
+const lyricMatching = require('./lyricMatching.js');
 
 getMetadata(1372807).then((data) => {
   querySearcher(data['artist'], data['title']).then((response) => {

@@ -1,9 +1,9 @@
 // let url = `https://www.azlyrics.com/lyrics/future/lifeisgood.html`;
-import Axios from 'axios';
-import Cheerio from 'cheerio';
+const Axios = require('axios');
+const Cheerio = require('cheerio');
 // const cheerio = require('cheerio');
 
-export async function getLyrics(url) {
+const getLyrics = async (url) => {
   try {
     let response = await Axios.get(url);
     let html = await response.data;
@@ -25,8 +25,8 @@ export async function getLyrics(url) {
     // fail quietly
     console.log(e);
   }
-}
-
+};
+exports.getLyrics = getLyrics;
 // getLyrics().then((r) => {
 //   console.log(r);
 // });

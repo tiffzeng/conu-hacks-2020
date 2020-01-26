@@ -1,8 +1,8 @@
-import Axios from 'axios';
-import Cheerio from 'cheerio';
+const Axios = require('axios');
+const Cheerio = require('cheerio');
 const base_url = 'https://search.azlyrics.com/search.php?q=+';
 
-export async function querySearcher(artist, title) {
+const querySearcher = async (artist, title) => {
   try {
     let response = await Axios.get(base_url + artist + '+' + title);
     let html = await response.data;
@@ -18,7 +18,9 @@ export async function querySearcher(artist, title) {
     // fail quietly
     console.log(e);
   }
-}
+};
+
+exports.querySearcher = querySearcher;
 
 // querySearcher("j. cole", "neighbors").then((r) => {
 //   console.log(r);
