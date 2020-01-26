@@ -7,6 +7,7 @@ import { getSong } from './api/Search';
 import React from 'react';
 import ReactPlayer from 'react-player';
 import ReactHowler from 'react-howler';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 class App extends React.Component {
   constructor() {
@@ -81,8 +82,14 @@ class App extends React.Component {
           {!this.state.hideSearchBar && <SearchBar passData={this.passData} />}
 
           <br/>
-          {this.state.isLoading && <div>Loading</div>}
-          {!this.state.hideList && this.displayList()}
+          {this.state.isLoading &&
+          <ClipLoader sizeUnit={"px"}
+                      size={50}
+                      loading={this.state.isLoading}
+                      color={"white"}
+          />
+            }
+          {(!this.state.hideList && !this.state.isLoading) && this.displayList()}
           {(this.state.urls.length > 0 &&
             <ReactHowler
               src={this.state.urls[this.state.urls.length - 1]}
