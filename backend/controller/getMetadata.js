@@ -25,5 +25,3 @@ module.exports = async (songId) => {
     console.log(e);
   }
 };
-
-// module.exports.getMetadata = getMetadata;

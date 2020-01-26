@@ -6,6 +6,7 @@ import VideoPlayer from './Components/VideoPlayer';
 import { getSong } from './api/Search';
 import React from 'react';
 import ReactPlayer from 'react-player';
+import ReactHowler from 'react-howler';
 
 class App extends React.Component {
   constructor() {
@@ -49,7 +50,7 @@ class App extends React.Component {
     });
 
     this.displayVideo(this.state.urls);
-    console.log(this.state.urls);
+    console.log(this.state.urls[this.state.urls.length - 1]);
   }
 
   displayVideo(urls) {
@@ -79,7 +80,7 @@ class App extends React.Component {
           <h2> ConU Hacks V 2020 </h2>
           {!this.state.hideSearchBar && <SearchBar passData={this.passData} />}
 
-          <br />
+          <br/>
           {this.state.isLoading && <div>Loading</div>}
           {!this.state.hideList && this.displayList()}
           {this.state.videoUrl.indexOf('mp4') !== -1 ||
@@ -88,6 +89,11 @@ class App extends React.Component {
           ) : (
             <img src={this.state.url} alt="new" width="640" height="360" />
           )}
+          {(this.state.urls.length > 0 &&
+            <ReactHowler
+              src={this.state.urls[this.state.urls.length - 1]}
+              playing={true}
+            />)}
           <Footer />
         </header>
       </div>

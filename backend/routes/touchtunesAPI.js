@@ -27,8 +27,8 @@ module.exports = function(app) {
   app.get('/song/:query', async (req, res) => {
     try {
       let query = req.params.query;
-      controllerLogic(query).then(async response => {
-         await res.send(response);
+      controllerLogic(query).then(async (response) => {
+        await res.send(response);
       });
     } catch (e) {
       // fail quietly
