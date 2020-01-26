@@ -1,12 +1,13 @@
-let url = `https://www.azlyrics.com/lyrics/future/lifeisgood.html`;
-const axios = require('axios');
-const cheerio = require('cheerio');
+// let url = `https://www.azlyrics.com/lyrics/future/lifeisgood.html`;
+import Axios from 'axios';
+import Cheerio from 'cheerio';
+// const cheerio = require('cheerio');
 
-export async function getLyrics() {
+export async function getLyrics(url) {
   try {
-    let response = await axios.get(url);
+    let response = await Axios.get(url);
     let html = await response.data;
-    let $ = await cheerio.load(html);
+    let $ = await Cheerio.load(html);
     let body = $('.az-song-text', 'html').html();
     let startMark =
       '<!-- Usage of azlyrics.com content by any third-party lyrics provider is prohibited by our licensing agreement. Sorry about that. -->';
@@ -15,7 +16,7 @@ export async function getLyrics() {
       body.indexOf(startMark) + startMark.length,
       body.indexOf(endMark)
     );
-    let lyrics = await cheerio.load(htmlLyrics).text();
+    let lyrics = await Cheerio.load(htmlLyrics).text();
     let lyricsArray = await lyrics.split('\n');
     return await lyricsArray.filter(
       (line) => line.length > 0 && line.indexOf('[') !== 0
@@ -29,3 +30,5 @@ export async function getLyrics() {
 // getLyrics().then((r) => {
 //   console.log(r);
 // });
+
+// exports.getLyrics = getLyrics;

@@ -22,26 +22,4 @@ module.exports = function(app) {
       console.log(e);
     }
   });
-
-  app.get('/song/info/:query', async (req, res) => {
-    try {
-      let id = req.params.query;
-      let options = {
-        url: songs_url + id,
-        method: 'get',
-        headers: { authorization: process.env.OCTAVE_GROUP }
-      };
-      let response = await axios(options);
-      let data = await response.data;
-      res.json({
-        title: data['title'],
-        artist: data['artist']['name'],
-        duration: data['duration'],
-        url: data['playUrl']
-      });
-    } catch (e) {
-      // fail quietly
-      console.log(e);
-    }
-  });
 };
