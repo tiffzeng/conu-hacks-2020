@@ -1,106 +1,92 @@
-# Title
+# Music Video Generator
+
+[Devpost](https://devpost.com/software/picture-video-music-generator)
 
 ## Description
 
----
+ConUHacks V 2020 project, developed in 24 hours.
 
-# Badges
+A user can enter a song title and artist, the web app will return a auto-generated music video corresponding to the song's lyrics as accurately as possible.
 
-## Objective
+### How?
 
-## Diagram / Screenshot
+Leveraged OctaveGroup's TouchTunes API to fetch song info, such as a normalized artist name, song title, duration and a playable URL.
+
+This information is used to scrape lyrics from http://azlyrics.com,
+depending of the length of the lyrics and the duration of the song,
+chunks would be stemmed and tokenized through an natural language processing library to retrieve the most meaningful keywords.
+
+Those keywords are passed through the ShutterStock API to retrieve relevant video footage to create the music video.
+
+The video is then displayed on the React.js front-end and played with the song.
+
+## Demo Video
+
+https://youtu.be/XYoatVr_w2s
 
 ## Built with / technologies
 
-## (Core) Features
-
-## Getting started
+- React.js
+- Node.js
+- Express.js
+- Natural npm package (Natural Language Processing)
+- Cheerio npm package (Scraping library)
 
 ### Prerequisites
 
+Must have installed:
+
+- Node.js 12+
+
 ### Configuration
+
+This project needs 2 API tokens/keys. OctaveGroup's TouchTunes and ShutterStock's.
+
+Create a `.env` file at the root of the `backend/` folder and complete the following lines:
+
+```
+OCTAVE_GROUP=
+SHUTTERSTOCK_API_TOKEN=
+```
 
 ### Installing
 
+- Clone the project
+- From the root of the directory, run `npm run installall`
+
+This will install all the npm dependencies needed to develop.
+
 ### Usage
+
+To run the development server:
+
+- cd to the root directory and run `npm start`
+
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 #### Use cases
 
-## Running the tests
+Automatically create visual content based on text/lyrics.
+
+Ideas for application:
+
+- Advertising
+- Content creators
 
 ## Roadmap / Todo
 
-## Support
+A couple ideas to extend this project includes:
+
+- Display lyrics underneath and match with timestamp of the song.
+- Refine algorithm and improve the timing of matching
 
 ## Authors
 
+[Gordon Pham-Nguyen](https://github.com/gpnn)
+[Mackenzie Bellemore](https://github.com/Mackbellemore)
+[Tiffany Zeng](https://github.com/tiffzeng)
+[Tyson Pham](https://github.com/TysonPham)
+
 ## License
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+[MIT License](https://choosealicense.com/licenses/mit/#)

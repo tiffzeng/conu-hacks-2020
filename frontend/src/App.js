@@ -2,7 +2,6 @@ import './App.css';
 import List from './Components/List';
 import SearchBar from './Components/SearchBar';
 import Footer from './Components/Footer';
-import VideoPlayer from './Components/VideoPlayer';
 import { getSong } from './api/Search';
 import React from 'react';
 import ReactPlayer from 'react-player';
@@ -10,8 +9,8 @@ import ReactHowler from 'react-howler';
 import ClipLoader from 'react-spinners/ClipLoader';
 
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       hideList: false,
       hideSearchBar: false,
@@ -29,7 +28,7 @@ class App extends React.Component {
   }
 
   passData(data) {
-    this.setState({ 
+    this.setState({
       data: data,
       hideSearchBar: true,
       hideList: false
@@ -80,28 +79,28 @@ class App extends React.Component {
         <header className="App-header">
           <h2> ConU Hacks V 2020 </h2>
           {!this.state.hideSearchBar && <SearchBar passData={this.passData} />}
-
-          <br/>
-          {this.state.isLoading &&
-          <ClipLoader sizeUnit={"px"}
-                      size={50}
-                      loading={this.state.isLoading}
-                      color={"white"}
-          />
-            }
-          {(!this.state.hideList && !this.state.isLoading) && this.displayList()}
-          {(this.state.urls.length > 0 &&
+          <br />
+          {this.state.isLoading && (
+            <ClipLoader
+              sizeUnit={'px'}
+              size={50}
+              loading={this.state.isLoading}
+              color={'white'}
+            />
+          )}
+          {!this.state.hideList && !this.state.isLoading && this.displayList()}
+          {this.state.urls.length > 0 && (
             <ReactHowler
               src={this.state.urls[this.state.urls.length - 1]}
               playing={true}
-            />)}
+            />
+          )}
           {this.state.videoUrl.indexOf('mp4') !== -1 ||
           this.state.videoUrl === '' ? (
             <ReactPlayer url={this.state.videoUrl} playing={this.state.playing} />
           ) : (
             <img src={this.state.url} alt="new" width="640" height="360" />
           )}
-
           <Footer />
         </header>
       </div>
